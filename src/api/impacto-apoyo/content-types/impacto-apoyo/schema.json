@@ -1,0 +1,30 @@
+{
+  "kind": "collectionType",
+  "collectionName": "impacto_apoyos",
+  "info": {
+    "singularName": "impacto-apoyo",
+    "pluralName": "impacto-apoyos",
+    "displayName": "Impacto Anual de Apoyos",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "anio": {
+      "type": "integer",
+      "required": true
+    },
+    "monto": {
+      "type": "decimal",
+      "required": true
+    },
+    "apoyo": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::apoyo.apoyo",
+      "inversedBy": "impacto_apoyos"
+    }
+  }
+}

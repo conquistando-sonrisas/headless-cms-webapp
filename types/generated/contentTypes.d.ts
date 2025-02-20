@@ -369,11 +369,45 @@ export interface AdminUser extends Struct.CollectionTypeSchema {
   };
 }
 
+export interface ApiApoyoApoyo extends Struct.CollectionTypeSchema {
+  collectionName: 'apoyos';
+  info: {
+    description: '';
+    displayName: 'Apoyos';
+    pluralName: 'apoyos';
+    singularName: 'apoyo';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    descripcion: Schema.Attribute.Text;
+    icono: Schema.Attribute.String;
+    impacto_apoyos: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::impacto-apoyo.impacto-apoyo'
+    >;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<'oneToMany', 'api::apoyo.apoyo'> &
+      Schema.Attribute.Private;
+    nombre: Schema.Attribute.String;
+    publishedAt: Schema.Attribute.DateTime;
+    unidadMedidaPlural: Schema.Attribute.String;
+    unidadMedidaSingular: Schema.Attribute.String;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface ApiHomeHome extends Struct.SingleTypeSchema {
   collectionName: 'homes';
   info: {
     description: '';
-    displayName: 'home';
+    displayName: 'Inicio';
     pluralName: 'homes';
     singularName: 'home';
   };
@@ -397,6 +431,69 @@ export interface ApiHomeHome extends Struct.SingleTypeSchema {
     NosotrosImagen: Schema.Attribute.Media<
       'images' | 'files' | 'videos' | 'audios'
     >;
+    publishedAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiImpactoApoyoImpactoApoyo
+  extends Struct.CollectionTypeSchema {
+  collectionName: 'impacto_apoyos';
+  info: {
+    description: '';
+    displayName: 'Impacto Anual de Apoyos';
+    pluralName: 'impacto-apoyos';
+    singularName: 'impacto-apoyo';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    anio: Schema.Attribute.Integer & Schema.Attribute.Required;
+    apoyo: Schema.Attribute.Relation<'manyToOne', 'api::apoyo.apoyo'>;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::impacto-apoyo.impacto-apoyo'
+    > &
+      Schema.Attribute.Private;
+    monto: Schema.Attribute.Decimal & Schema.Attribute.Required;
+    publishedAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiImpactoGeneralImpactoGeneral
+  extends Struct.CollectionTypeSchema {
+  collectionName: 'impactos_generales';
+  info: {
+    displayName: 'Resumen Impacto General';
+    pluralName: 'impactos-generales';
+    singularName: 'impacto-general';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    anio: Schema.Attribute.Integer & Schema.Attribute.Required;
+    apoyosOtorgados: Schema.Attribute.Integer & Schema.Attribute.Required;
+    beneficiados: Schema.Attribute.Integer & Schema.Attribute.Required;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::impacto-general.impacto-general'
+    > &
+      Schema.Attribute.Private;
     publishedAt: Schema.Attribute.DateTime;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
@@ -913,7 +1010,10 @@ declare module '@strapi/strapi' {
       'admin::transfer-token': AdminTransferToken;
       'admin::transfer-token-permission': AdminTransferTokenPermission;
       'admin::user': AdminUser;
+      'api::apoyo.apoyo': ApiApoyoApoyo;
       'api::home.home': ApiHomeHome;
+      'api::impacto-apoyo.impacto-apoyo': ApiImpactoApoyoImpactoApoyo;
+      'api::impacto-general.impacto-general': ApiImpactoGeneralImpactoGeneral;
       'plugin::content-releases.release': PluginContentReleasesRelease;
       'plugin::content-releases.release-action': PluginContentReleasesReleaseAction;
       'plugin::i18n.locale': PluginI18NLocale;

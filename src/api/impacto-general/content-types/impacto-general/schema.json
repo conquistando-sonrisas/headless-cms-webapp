@@ -1,0 +1,27 @@
+{
+  "kind": "collectionType",
+  "collectionName": "impactos_generales",
+  "info": {
+    "singularName": "impacto-general",
+    "pluralName": "impactos-generales",
+    "displayName": "Resumen Impacto General"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "anio": {
+      "type": "integer",
+      "required": true
+    },
+    "apoyosOtorgados": {
+      "type": "integer",
+      "required": true
+    },
+    "beneficiados": {
+      "type": "integer",
+      "required": true
+    }
+  }
+}
