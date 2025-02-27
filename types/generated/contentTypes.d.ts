@@ -501,6 +501,44 @@ export interface ApiImpactoGeneralImpactoGeneral
   };
 }
 
+export interface ApiNovedadNovedad extends Struct.CollectionTypeSchema {
+  collectionName: 'novedades';
+  info: {
+    description: '';
+    displayName: 'Novedades';
+    pluralName: 'novedades';
+    singularName: 'novedad';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    autor: Schema.Attribute.Relation<
+      'manyToOne',
+      'plugin::users-permissions.user'
+    >;
+    contenido: Schema.Attribute.RichText;
+    cover: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::novedad.novedad'
+    > &
+      Schema.Attribute.Private;
+    publishedAt: Schema.Attribute.DateTime;
+    tipo: Schema.Attribute.Enumeration<
+      ['Noticia', 'Blog', 'Entrevista', 'Invitado']
+    >;
+    titulo: Schema.Attribute.String;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface PluginContentReleasesRelease
   extends Struct.CollectionTypeSchema {
   collectionName: 'strapi_releases';
@@ -976,6 +1014,7 @@ export interface PluginUsersPermissionsUser
       'plugin::users-permissions.user'
     > &
       Schema.Attribute.Private;
+    novedades: Schema.Attribute.Relation<'oneToMany', 'api::novedad.novedad'>;
     password: Schema.Attribute.Password &
       Schema.Attribute.Private &
       Schema.Attribute.SetMinMaxLength<{
@@ -1014,6 +1053,7 @@ declare module '@strapi/strapi' {
       'api::home.home': ApiHomeHome;
       'api::impacto-apoyo.impacto-apoyo': ApiImpactoApoyoImpactoApoyo;
       'api::impacto-general.impacto-general': ApiImpactoGeneralImpactoGeneral;
+      'api::novedad.novedad': ApiNovedadNovedad;
       'plugin::content-releases.release': PluginContentReleasesRelease;
       'plugin::content-releases.release-action': PluginContentReleasesReleaseAction;
       'plugin::i18n.locale': PluginI18NLocale;
