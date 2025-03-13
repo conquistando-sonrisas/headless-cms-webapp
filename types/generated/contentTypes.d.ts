@@ -539,6 +539,39 @@ export interface ApiNovedadNovedad extends Struct.CollectionTypeSchema {
   };
 }
 
+export interface ApiTestimonioTestimonio extends Struct.CollectionTypeSchema {
+  collectionName: 'testimonios';
+  info: {
+    description: '';
+    displayName: 'Testimonios';
+    pluralName: 'testimonios';
+    singularName: 'testimonio';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    beneficiarioNombre: Schema.Attribute.String;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    fotografia: Schema.Attribute.Media<
+      'images' | 'files' | 'videos' | 'audios'
+    >;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::testimonio.testimonio'
+    > &
+      Schema.Attribute.Private;
+    mensaje: Schema.Attribute.RichText;
+    publishedAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface PluginContentReleasesRelease
   extends Struct.CollectionTypeSchema {
   collectionName: 'strapi_releases';
@@ -1054,6 +1087,7 @@ declare module '@strapi/strapi' {
       'api::impacto-apoyo.impacto-apoyo': ApiImpactoApoyoImpactoApoyo;
       'api::impacto-general.impacto-general': ApiImpactoGeneralImpactoGeneral;
       'api::novedad.novedad': ApiNovedadNovedad;
+      'api::testimonio.testimonio': ApiTestimonioTestimonio;
       'plugin::content-releases.release': PluginContentReleasesRelease;
       'plugin::content-releases.release-action': PluginContentReleasesReleaseAction;
       'plugin::i18n.locale': PluginI18NLocale;
