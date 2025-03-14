@@ -1,0 +1,15 @@
+{
+  "collectionName": "components_nosotros_culturas",
+  "info": {
+    "displayName": "cultura"
+  },
+  "options": {},
+  "attributes": {
+    "tipo": {
+      "type": "string"
+    },
+    "contenido": {
+      "type": "richtext"
+    }
+  }
+}

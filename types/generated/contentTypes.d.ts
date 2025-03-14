@@ -527,6 +527,39 @@ export interface ApiImpactoGeneralImpactoGeneral
   };
 }
 
+export interface ApiNosotrosNosotros extends Struct.SingleTypeSchema {
+  collectionName: 'nosotros_plural';
+  info: {
+    description: '';
+    displayName: 'nosotros';
+    pluralName: 'nosotros-plural';
+    singularName: 'nosotros';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    descripcion: Schema.Attribute.Text;
+    filosofia: Schema.Attribute.Text;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::nosotros.nosotros'
+    > &
+      Schema.Attribute.Private;
+    mision: Schema.Attribute.Text;
+    publishedAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    valores: Schema.Attribute.RichText;
+    vision: Schema.Attribute.Text;
+  };
+}
+
 export interface ApiNovedadNovedad extends Struct.CollectionTypeSchema {
   collectionName: 'novedades';
   info: {
@@ -1113,6 +1146,7 @@ declare module '@strapi/strapi' {
       'api::home.home': ApiHomeHome;
       'api::impacto-apoyo.impacto-apoyo': ApiImpactoApoyoImpactoApoyo;
       'api::impacto-general.impacto-general': ApiImpactoGeneralImpactoGeneral;
+      'api::nosotros.nosotros': ApiNosotrosNosotros;
       'api::novedad.novedad': ApiNovedadNovedad;
       'api::testimonio.testimonio': ApiTestimonioTestimonio;
       'plugin::content-releases.release': PluginContentReleasesRelease;

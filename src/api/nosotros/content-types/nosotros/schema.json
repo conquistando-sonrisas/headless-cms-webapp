@@ -1,0 +1,31 @@
+{
+  "kind": "singleType",
+  "collectionName": "nosotros_plural",
+  "info": {
+    "singularName": "nosotros",
+    "pluralName": "nosotros-plural",
+    "displayName": "nosotros",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "descripcion": {
+      "type": "text"
+    },
+    "filosofia": {
+      "type": "text"
+    },
+    "mision": {
+      "type": "text"
+    },
+    "vision": {
+      "type": "text"
+    },
+    "valores": {
+      "type": "richtext"
+    }
+  }
+}
