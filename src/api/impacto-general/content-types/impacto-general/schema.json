@@ -4,7 +4,8 @@
   "info": {
     "singularName": "impacto-general",
     "pluralName": "impactos-generales",
-    "displayName": "Resumen Impacto General"
+    "displayName": "Resumen Impacto General",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -22,6 +23,16 @@
     "beneficiados": {
       "type": "integer",
       "required": true
+    },
+    "informeAnual": {
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ],
+      "type": "media",
+      "multiple": false
     }
   }
 }

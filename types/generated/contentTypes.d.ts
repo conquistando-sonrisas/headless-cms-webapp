@@ -500,6 +500,7 @@ export interface ApiImpactoGeneralImpactoGeneral
   extends Struct.CollectionTypeSchema {
   collectionName: 'impactos_generales';
   info: {
+    description: '';
     displayName: 'Resumen Impacto General';
     pluralName: 'impactos-generales';
     singularName: 'impacto-general';
@@ -514,6 +515,9 @@ export interface ApiImpactoGeneralImpactoGeneral
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
+    informeAnual: Schema.Attribute.Media<
+      'images' | 'files' | 'videos' | 'audios'
+    >;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
       'oneToMany',
