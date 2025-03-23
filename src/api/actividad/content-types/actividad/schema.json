@@ -1,0 +1,28 @@
+{
+  "kind": "collectionType",
+  "collectionName": "actividades",
+  "info": {
+    "singularName": "actividad",
+    "pluralName": "actividades",
+    "displayName": "Actividades de voluntariado"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "actividad": {
+      "type": "string"
+    },
+    "foto": {
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ],
+      "type": "media",
+      "multiple": false
+    }
+  }
+}

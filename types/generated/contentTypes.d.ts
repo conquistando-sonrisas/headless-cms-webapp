@@ -369,6 +369,35 @@ export interface AdminUser extends Struct.CollectionTypeSchema {
   };
 }
 
+export interface ApiActividadActividad extends Struct.CollectionTypeSchema {
+  collectionName: 'actividades';
+  info: {
+    displayName: 'Actividades de voluntariado';
+    pluralName: 'actividades';
+    singularName: 'actividad';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    actividad: Schema.Attribute.String;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    foto: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::actividad.actividad'
+    > &
+      Schema.Attribute.Private;
+    publishedAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface ApiApoyoApoyo extends Struct.CollectionTypeSchema {
   collectionName: 'apoyos';
   info: {
@@ -397,6 +426,36 @@ export interface ApiApoyoApoyo extends Struct.CollectionTypeSchema {
     publishedAt: Schema.Attribute.DateTime;
     unidadMedidaPlural: Schema.Attribute.String;
     unidadMedidaSingular: Schema.Attribute.String;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiEquipoEquipo extends Struct.CollectionTypeSchema {
+  collectionName: 'equipos';
+  info: {
+    displayName: 'Equipos';
+    pluralName: 'equipos';
+    singularName: 'equipo';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    descripcion: Schema.Attribute.Text;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::equipo.equipo'
+    > &
+      Schema.Attribute.Private;
+    logo: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    nombre: Schema.Attribute.String;
+    publishedAt: Schema.Attribute.DateTime;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -1139,7 +1198,9 @@ declare module '@strapi/strapi' {
       'admin::transfer-token': AdminTransferToken;
       'admin::transfer-token-permission': AdminTransferTokenPermission;
       'admin::user': AdminUser;
+      'api::actividad.actividad': ApiActividadActividad;
       'api::apoyo.apoyo': ApiApoyoApoyo;
+      'api::equipo.equipo': ApiEquipoEquipo;
       'api::faq.faq': ApiFaqFaq;
       'api::home.home': ApiHomeHome;
       'api::impacto-apoyo.impacto-apoyo': ApiImpactoApoyoImpactoApoyo;
