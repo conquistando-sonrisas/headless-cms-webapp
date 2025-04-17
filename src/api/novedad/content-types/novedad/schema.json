@@ -36,8 +36,13 @@
         "Noticia",
         "Blog",
         "Entrevista",
+        "Campaña",
         "Invitado"
       ]
+    },
+    "resumen": {
+      "type": "text",
+      "maxLength": 200
     }
   }
 }

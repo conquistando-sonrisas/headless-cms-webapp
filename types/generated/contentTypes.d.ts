@@ -647,8 +647,12 @@ export interface ApiNovedadNovedad extends Struct.CollectionTypeSchema {
     > &
       Schema.Attribute.Private;
     publishedAt: Schema.Attribute.DateTime;
+    resumen: Schema.Attribute.Text &
+      Schema.Attribute.SetMinMaxLength<{
+        maxLength: 200;
+      }>;
     tipo: Schema.Attribute.Enumeration<
-      ['Noticia', 'Blog', 'Entrevista', 'Invitado']
+      ['Noticia', 'Blog', 'Entrevista', 'Campa\u00F1a', 'Invitado']
     >;
     titulo: Schema.Attribute.String;
     updatedAt: Schema.Attribute.DateTime;
