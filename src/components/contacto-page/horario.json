@@ -1,0 +1,23 @@
+{
+  "collectionName": "components_contacto_page_horarios",
+  "info": {
+    "displayName": "horario",
+    "icon": "clock"
+  },
+  "options": {},
+  "attributes": {
+    "dia": {
+      "type": "string"
+    },
+    "inicio": {
+      "type": "time"
+    },
+    "termino": {
+      "type": "time"
+    },
+    "abierto": {
+      "type": "boolean",
+      "default": true
+    }
+  }
+}

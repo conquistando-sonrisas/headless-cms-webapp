@@ -432,6 +432,39 @@ export interface ApiApoyoApoyo extends Struct.CollectionTypeSchema {
   };
 }
 
+export interface ApiContactoContacto extends Struct.SingleTypeSchema {
+  collectionName: 'contactos';
+  info: {
+    description: '';
+    displayName: 'Contacto';
+    pluralName: 'contactos';
+    singularName: 'contacto';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    coordenadas: Schema.Attribute.JSON;
+    correo: Schema.Attribute.Email;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    direccion: Schema.Attribute.String;
+    horarios: Schema.Attribute.Component<'contacto-page.horario', true>;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::contacto.contacto'
+    > &
+      Schema.Attribute.Private;
+    publishedAt: Schema.Attribute.DateTime;
+    telefono: Schema.Attribute.String;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface ApiEquipoEquipo extends Struct.CollectionTypeSchema {
   collectionName: 'equipos';
   info: {
@@ -1204,6 +1237,7 @@ declare module '@strapi/strapi' {
       'admin::user': AdminUser;
       'api::actividad.actividad': ApiActividadActividad;
       'api::apoyo.apoyo': ApiApoyoApoyo;
+      'api::contacto.contacto': ApiContactoContacto;
       'api::equipo.equipo': ApiEquipoEquipo;
       'api::faq.faq': ApiFaqFaq;
       'api::home.home': ApiHomeHome;
