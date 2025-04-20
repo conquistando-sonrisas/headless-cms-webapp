@@ -623,6 +623,42 @@ export interface ApiImpactoGeneralImpactoGeneral
   };
 }
 
+export interface ApiMensajeMensaje extends Struct.CollectionTypeSchema {
+  collectionName: 'mensajes';
+  info: {
+    description: '';
+    displayName: 'Mensajes';
+    pluralName: 'mensajes';
+    singularName: 'mensaje';
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  attributes: {
+    celular: Schema.Attribute.String & Schema.Attribute.Required;
+    correo: Schema.Attribute.Email & Schema.Attribute.Required;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::mensaje.mensaje'
+    > &
+      Schema.Attribute.Private;
+    mensaje: Schema.Attribute.Text &
+      Schema.Attribute.Required &
+      Schema.Attribute.SetMinMaxLength<{
+        maxLength: 300;
+      }>;
+    nombre: Schema.Attribute.String & Schema.Attribute.Required;
+    publishedAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface ApiNosotrosNosotros extends Struct.SingleTypeSchema {
   collectionName: 'nosotros_plural';
   info: {
@@ -1243,6 +1279,7 @@ declare module '@strapi/strapi' {
       'api::home.home': ApiHomeHome;
       'api::impacto-apoyo.impacto-apoyo': ApiImpactoApoyoImpactoApoyo;
       'api::impacto-general.impacto-general': ApiImpactoGeneralImpactoGeneral;
+      'api::mensaje.mensaje': ApiMensajeMensaje;
       'api::nosotros.nosotros': ApiNosotrosNosotros;
       'api::novedad.novedad': ApiNovedadNovedad;
       'api::testimonio.testimonio': ApiTestimonioTestimonio;
