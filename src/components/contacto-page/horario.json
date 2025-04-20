@@ -2,13 +2,11 @@
   "collectionName": "components_contacto_page_horarios",
   "info": {
     "displayName": "horario",
-    "icon": "clock"
+    "icon": "clock",
+    "description": ""
   },
   "options": {},
   "attributes": {
-    "dia": {
-      "type": "string"
-    },
     "inicio": {
       "type": "time"
     },
@@ -18,6 +16,18 @@
     "abierto": {
       "type": "boolean",
       "default": true
+    },
+    "dia": {
+      "type": "enumeration",
+      "enum": [
+        "lunes",
+        "martes",
+        "miércoles",
+        "jueves",
+        "viernes",
+        "sabado",
+        "domingo"
+      ]
     }
   }
 }

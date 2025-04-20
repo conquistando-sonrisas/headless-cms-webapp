@@ -3,12 +3,23 @@ import type { Schema, Struct } from '@strapi/strapi';
 export interface ContactoPageHorario extends Struct.ComponentSchema {
   collectionName: 'components_contacto_page_horarios';
   info: {
+    description: '';
     displayName: 'horario';
     icon: 'clock';
   };
   attributes: {
     abierto: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<true>;
-    dia: Schema.Attribute.String;
+    dia: Schema.Attribute.Enumeration<
+      [
+        'lunes',
+        'martes',
+        'mi\u00E9rcoles',
+        'jueves',
+        'viernes',
+        'sabado',
+        'domingo',
+      ]
+    >;
     inicio: Schema.Attribute.Time;
     termino: Schema.Attribute.Time;
   };
