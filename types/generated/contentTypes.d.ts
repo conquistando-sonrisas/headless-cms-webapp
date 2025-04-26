@@ -462,6 +462,35 @@ export interface ApiApoyoApoyo extends Struct.CollectionTypeSchema {
   };
 }
 
+export interface ApiAvisoDePrivacidadAvisoDePrivacidad
+  extends Struct.SingleTypeSchema {
+  collectionName: 'aviso_de_privacidades';
+  info: {
+    displayName: 'Aviso de Privacidad';
+    pluralName: 'aviso-de-privacidades';
+    singularName: 'aviso-de-privacidad';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    contenido: Schema.Attribute.RichText;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::aviso-de-privacidad.aviso-de-privacidad'
+    > &
+      Schema.Attribute.Private;
+    publishedAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface ApiContactoContacto extends Struct.SingleTypeSchema {
   collectionName: 'contactos';
   info: {
@@ -1340,6 +1369,7 @@ declare module '@strapi/strapi' {
       'api::actividad.actividad': ApiActividadActividad;
       'api::album.album': ApiAlbumAlbum;
       'api::apoyo.apoyo': ApiApoyoApoyo;
+      'api::aviso-de-privacidad.aviso-de-privacidad': ApiAvisoDePrivacidadAvisoDePrivacidad;
       'api::contacto.contacto': ApiContactoContacto;
       'api::equipo.equipo': ApiEquipoEquipo;
       'api::evento.evento': ApiEventoEvento;

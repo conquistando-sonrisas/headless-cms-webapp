@@ -1,0 +1,18 @@
+{
+  "kind": "singleType",
+  "collectionName": "aviso_de_privacidades",
+  "info": {
+    "singularName": "aviso-de-privacidad",
+    "pluralName": "aviso-de-privacidades",
+    "displayName": "Aviso de Privacidad"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "contenido": {
+      "type": "richtext"
+    }
+  }
+}
