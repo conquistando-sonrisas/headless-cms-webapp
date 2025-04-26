@@ -372,6 +372,7 @@ export interface AdminUser extends Struct.CollectionTypeSchema {
 export interface ApiActividadActividad extends Struct.CollectionTypeSchema {
   collectionName: 'actividades';
   info: {
+    description: '';
     displayName: 'Actividades de voluntariado';
     pluralName: 'actividades';
     singularName: 'actividad';
@@ -391,6 +392,35 @@ export interface ApiActividadActividad extends Struct.CollectionTypeSchema {
       'api::actividad.actividad'
     > &
       Schema.Attribute.Private;
+    publishedAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiAlbumAlbum extends Struct.CollectionTypeSchema {
+  collectionName: 'albums';
+  info: {
+    displayName: 'Album';
+    pluralName: 'albums';
+    singularName: 'album';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    fotos: Schema.Attribute.Media<
+      'images' | 'files' | 'videos' | 'audios',
+      true
+    >;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<'oneToMany', 'api::album.album'> &
+      Schema.Attribute.Private;
+    nombre: Schema.Attribute.String & Schema.Attribute.Required;
     publishedAt: Schema.Attribute.DateTime;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
@@ -489,6 +519,42 @@ export interface ApiEquipoEquipo extends Struct.CollectionTypeSchema {
     logo: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
     nombre: Schema.Attribute.String;
     publishedAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiEventoEvento extends Struct.CollectionTypeSchema {
+  collectionName: 'eventos';
+  info: {
+    description: '';
+    displayName: 'Eventos';
+    pluralName: 'eventos';
+    singularName: 'evento';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    album: Schema.Attribute.Relation<'oneToOne', 'api::album.album'>;
+    contenido: Schema.Attribute.RichText;
+    cover: Schema.Attribute.Media<'images' | 'files' | 'videos'>;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    descripcion: Schema.Attribute.Text & Schema.Attribute.Required;
+    fechaInicio: Schema.Attribute.Date & Schema.Attribute.Required;
+    horaInicio: Schema.Attribute.Time;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::evento.evento'
+    > &
+      Schema.Attribute.Private;
+    nombre: Schema.Attribute.String & Schema.Attribute.Required;
+    publishedAt: Schema.Attribute.DateTime;
+    ubicacion: Schema.Attribute.String;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -1272,9 +1338,11 @@ declare module '@strapi/strapi' {
       'admin::transfer-token-permission': AdminTransferTokenPermission;
       'admin::user': AdminUser;
       'api::actividad.actividad': ApiActividadActividad;
+      'api::album.album': ApiAlbumAlbum;
       'api::apoyo.apoyo': ApiApoyoApoyo;
       'api::contacto.contacto': ApiContactoContacto;
       'api::equipo.equipo': ApiEquipoEquipo;
+      'api::evento.evento': ApiEventoEvento;
       'api::faq.faq': ApiFaqFaq;
       'api::home.home': ApiHomeHome;
       'api::impacto-apoyo.impacto-apoyo': ApiImpactoApoyoImpactoApoyo;

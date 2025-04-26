@@ -4,7 +4,8 @@
   "info": {
     "singularName": "actividad",
     "pluralName": "actividades",
-    "displayName": "Actividades de voluntariado"
+    "displayName": "Actividades de voluntariado",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -15,14 +16,15 @@
       "type": "string"
     },
     "foto": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
       "allowedTypes": [
         "images",
         "files",
         "videos",
         "audios"
-      ],
-      "type": "media",
-      "multiple": false
+      ]
     }
   }
 }
