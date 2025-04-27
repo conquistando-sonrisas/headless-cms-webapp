@@ -1,0 +1,18 @@
+{
+  "kind": "singleType",
+  "collectionName": "donaciones_legals",
+  "info": {
+    "singularName": "donaciones-legal",
+    "pluralName": "donaciones-legals",
+    "displayName": "Donaciones Legal"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "contenido": {
+      "type": "richtext"
+    }
+  }
+}

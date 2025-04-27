@@ -524,6 +524,35 @@ export interface ApiContactoContacto extends Struct.SingleTypeSchema {
   };
 }
 
+export interface ApiDonacionesLegalDonacionesLegal
+  extends Struct.SingleTypeSchema {
+  collectionName: 'donaciones_legals';
+  info: {
+    displayName: 'Donaciones Legal';
+    pluralName: 'donaciones-legals';
+    singularName: 'donaciones-legal';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    contenido: Schema.Attribute.RichText;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::donaciones-legal.donaciones-legal'
+    > &
+      Schema.Attribute.Private;
+    publishedAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface ApiEquipoEquipo extends Struct.CollectionTypeSchema {
   collectionName: 'equipos';
   info: {
@@ -1371,6 +1400,7 @@ declare module '@strapi/strapi' {
       'api::apoyo.apoyo': ApiApoyoApoyo;
       'api::aviso-de-privacidad.aviso-de-privacidad': ApiAvisoDePrivacidadAvisoDePrivacidad;
       'api::contacto.contacto': ApiContactoContacto;
+      'api::donaciones-legal.donaciones-legal': ApiDonacionesLegalDonacionesLegal;
       'api::equipo.equipo': ApiEquipoEquipo;
       'api::evento.evento': ApiEventoEvento;
       'api::faq.faq': ApiFaqFaq;
