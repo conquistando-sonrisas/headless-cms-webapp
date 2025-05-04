@@ -1,0 +1,42 @@
+{
+  "kind": "collectionType",
+  "collectionName": "voluntarios",
+  "info": {
+    "singularName": "voluntario",
+    "pluralName": "voluntarios",
+    "displayName": "Voluntarios",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "nombre": {
+      "type": "string"
+    },
+    "correo": {
+      "type": "email"
+    },
+    "celular": {
+      "type": "string"
+    },
+    "fechaNacimiento": {
+      "type": "date"
+    },
+    "actividad": {
+      "type": "enumeration",
+      "enum": [
+        "Estudio",
+        "Trabajo",
+        "Ambas"
+      ]
+    },
+    "fortalezas": {
+      "type": "text"
+    },
+    "motivo": {
+      "type": "text"
+    }
+  }
+}
