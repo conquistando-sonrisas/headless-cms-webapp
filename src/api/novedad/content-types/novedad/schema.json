@@ -43,6 +43,11 @@
     "resumen": {
       "type": "text",
       "maxLength": 200
+    },
+    "autor": {
+      "type": "string",
+      "required": true,
+      "default": "Conquistando Sonrisas A.C."
     }
   }
 }

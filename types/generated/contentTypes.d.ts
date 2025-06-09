@@ -673,6 +673,9 @@ export interface ApiHomeHome extends Struct.SingleTypeSchema {
     NosotrosImagen: Schema.Attribute.Media<
       'images' | 'files' | 'videos' | 'audios'
     >;
+    openGraphImage: Schema.Attribute.Media<
+      'images' | 'files' | 'videos' | 'audios'
+    >;
     publishedAt: Schema.Attribute.DateTime;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
@@ -829,6 +832,9 @@ export interface ApiNovedadNovedad extends Struct.CollectionTypeSchema {
     populateCreatorFields: true;
   };
   attributes: {
+    autor: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.DefaultTo<'Conquistando Sonrisas A.C.'>;
     contenido: Schema.Attribute.RichText;
     cover: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
     createdAt: Schema.Attribute.DateTime;
