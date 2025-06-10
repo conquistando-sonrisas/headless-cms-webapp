@@ -18,20 +18,20 @@
     "descripcion": {
       "type": "text"
     },
-    "icono": {
-      "type": "string"
-    },
-    "unidadMedidaPlural": {
-      "type": "string"
-    },
-    "unidadMedidaSingular": {
-      "type": "string"
-    },
     "impacto_apoyos": {
       "type": "relation",
       "relation": "oneToMany",
       "target": "api::impacto-apoyo.impacto-apoyo",
       "mappedBy": "apoyo"
+    },
+    "icon": {
+      "type": "media",
+      "multiple": false,
+      "required": true,
+      "allowedTypes": [
+        "images",
+        "files"
+      ]
     }
   }
 }

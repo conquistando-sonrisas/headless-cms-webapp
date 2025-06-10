@@ -444,7 +444,8 @@ export interface ApiApoyoApoyo extends Struct.CollectionTypeSchema {
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
     descripcion: Schema.Attribute.Text;
-    icono: Schema.Attribute.String;
+    icon: Schema.Attribute.Media<'images' | 'files'> &
+      Schema.Attribute.Required;
     impacto_apoyos: Schema.Attribute.Relation<
       'oneToMany',
       'api::impacto-apoyo.impacto-apoyo'
@@ -454,8 +455,6 @@ export interface ApiApoyoApoyo extends Struct.CollectionTypeSchema {
       Schema.Attribute.Private;
     nombre: Schema.Attribute.String;
     publishedAt: Schema.Attribute.DateTime;
-    unidadMedidaPlural: Schema.Attribute.String;
-    unidadMedidaSingular: Schema.Attribute.String;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
