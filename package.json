@@ -7,7 +7,7 @@
     "build": "strapi build",
     "deploy": "strapi deploy",
     "dev": "strapi develop",
-    "prestart": "build",
+    "prestart": "strapi build",
     "start": "strapi start",
     "strapi": "strapi"
   },
