@@ -6,14 +6,16 @@
   "scripts": {
     "build": "strapi build",
     "deploy": "strapi deploy",
-    "develop": "strapi develop",
+    "dev": "strapi develop",
+    "prestart": "strapi build",
     "start": "strapi start",
     "strapi": "strapi"
   },
   "dependencies": {
-    "@strapi/plugin-cloud": "5.5.0",
-    "@strapi/plugin-users-permissions": "5.5.0",
-    "@strapi/strapi": "5.5.0",
+    "@strapi/plugin-cloud": "5.12.7",
+    "@strapi/plugin-users-permissions": "5.12.7",
+    "@strapi/provider-upload-local": "^5.15.0",
+    "@strapi/strapi": "5.12.7",
     "pg": "8.8.0",
     "react": "^18.0.0",
     "react-dom": "^18.0.0",
@@ -31,6 +33,7 @@
     "npm": ">=6.0.0"
   },
   "strapi": {
-    "uuid": "41fa38ec-054e-48b6-b48d-089bc5789b9d"
+    "uuid": "41fa38ec-054e-48b6-b48d-089bc5789b9d",
+    "telemetryDisabled": true
   }
 }

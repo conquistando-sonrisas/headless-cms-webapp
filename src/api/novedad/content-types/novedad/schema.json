@@ -1,0 +1,53 @@
+{
+  "kind": "collectionType",
+  "collectionName": "novedades",
+  "info": {
+    "singularName": "novedad",
+    "pluralName": "novedades",
+    "displayName": "Novedades",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true,
+    "populateCreatorFields": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "titulo": {
+      "type": "string"
+    },
+    "contenido": {
+      "type": "richtext"
+    },
+    "cover": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "tipo": {
+      "type": "enumeration",
+      "enum": [
+        "Noticia",
+        "Blog",
+        "Entrevista",
+        "Campaña",
+        "Invitado"
+      ]
+    },
+    "resumen": {
+      "type": "text",
+      "maxLength": 200
+    },
+    "autor": {
+      "type": "string",
+      "required": true,
+      "default": "Conquistando Sonrisas A.C."
+    }
+  }
+}

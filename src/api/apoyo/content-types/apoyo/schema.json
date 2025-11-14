@@ -1,0 +1,37 @@
+{
+  "kind": "collectionType",
+  "collectionName": "apoyos",
+  "info": {
+    "singularName": "apoyo",
+    "pluralName": "apoyos",
+    "displayName": "Apoyos",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "nombre": {
+      "type": "string"
+    },
+    "descripcion": {
+      "type": "text"
+    },
+    "impacto_apoyos": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::impacto-apoyo.impacto-apoyo",
+      "mappedBy": "apoyo"
+    },
+    "icon": {
+      "type": "media",
+      "multiple": false,
+      "required": true,
+      "allowedTypes": [
+        "images",
+        "files"
+      ]
+    }
+  }
+}

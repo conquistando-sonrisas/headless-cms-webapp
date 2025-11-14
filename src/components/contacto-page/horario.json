@@ -1,0 +1,33 @@
+{
+  "collectionName": "components_contacto_page_horarios",
+  "info": {
+    "displayName": "horario",
+    "icon": "clock",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "inicio": {
+      "type": "time"
+    },
+    "termino": {
+      "type": "time"
+    },
+    "abierto": {
+      "type": "boolean",
+      "default": true
+    },
+    "dia": {
+      "type": "enumeration",
+      "enum": [
+        "lunes",
+        "martes",
+        "miércoles",
+        "jueves",
+        "viernes",
+        "sabado",
+        "domingo"
+      ]
+    }
+  }
+}
